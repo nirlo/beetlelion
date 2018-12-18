@@ -32309,10 +32309,11 @@ def flatten(ordereddict):
     return FlatDict(ordereddict)
 
 ############
+# Problem: Lists of OrderedDict remain after flattening under some key value, for example `primary outcomes`
+# Question: Nick, how you want this resolved? Cannot be a hard coded answer because some XML may not contain the same number of primary outcomes, or it might not have a primary outcome at all.
+
 def run():
     return list(map(
-        lambda x: flatten(parse_xml(make_req(get_http_str(x)))), _nctids[0]
+        lambda x: flatten(parse_xml(make_req(get_http_str(x)))), _nctids
     ))
 
-run()
-print("DONE")
