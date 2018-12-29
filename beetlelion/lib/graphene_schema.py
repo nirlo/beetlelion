@@ -1,7 +1,7 @@
 from graphene import ObjectType, String, Boolean, ID, Field, Int, Date
 
 class study(ObjectType):
-  officail_title = String()
+  offical_title = String()
   nct_id = String()
   last_update_submitted_date = Date()
   completion_date = Date()
@@ -25,3 +25,5 @@ class study(ObjectType):
   secondary_outcome_measures = List(String)
   intervention_name = List(String)
 
+class Query(ObjectType):
+  study = graphene.Field
