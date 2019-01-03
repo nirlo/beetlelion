@@ -1,4 +1,4 @@
-import urllib2
+import urllib
 import xmltodict
 import collections
 from flatdict import FlatDict
@@ -32299,21 +32299,22 @@ _nctids = ["NCT01732263",
 def get_http_str(s):
     return _api_path + s + _as_xml_arg
 
+
 def make_req(httpstr):
-    return urllib2.urlopen(httpstr).read()
+    return urllib.request.urlopen(httpstr).read()
+
 
 def parse_xml(xml_str):
     return (xmltodict.parse(xml_str))
 
+
 def flatten(ordereddict):
     return FlatDict(ordereddict)
 
-############
-# Problem: Lists of OrderedDict remain after flattening under some key value, for example `primary outcomes`
-# Question: Nick, how you want this resolved? Cannot be a hard coded answer because some XML may not contain the same number of primary outcomes, or it might not have a primary outcome at all.
 
 def run():
     return list(map(
         lambda x: flatten(parse_xml(make_req(get_http_str(x)))), _nctids
     ))
 
+print(run())
