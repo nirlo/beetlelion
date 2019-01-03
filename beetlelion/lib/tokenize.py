@@ -7,7 +7,7 @@ import string
 from __future__ import division
 
 def isPunct(word):
-  return len(word) == 1 and work in string.punctuation
+  return len(word) == 1 and word in string.punctuation
 
 def inNumeric(word):
   try:
@@ -35,7 +35,7 @@ def _cal_word_scores(phrase_list):
   word_freq = nltk.FreqDist()
   word_degree = nltk.FreqDist()
   for phrase in phrase_list:
-    degree = len(filter(lambda x: not isNumeric(x), phrase)) - 1
+    degree = len(filter(lambda x: not x.isNumeric(), phrase)) - 1
     for word in phrase:
       word_freq.inc(word)
       word_degree.inc(word, degree)
@@ -56,16 +56,16 @@ def _cal_phrase_scores(phrase_list, word_scores):
   return phrase_scores
 
 def extract_keywords(text, incl_scores=False):
-  sentences = nltk.sent_tokenize(test)
+  sentences = nltk.sent_tokenize(text)
   phrase_list = _gen_candidate_keywords(sentences)
   word_scores = _cal_word_scores(phrase_list)
   phrase_scores = _cal_phrase_scores(phrase_list, word_scores)
-  sorted_phrase_scores = sorted(phrase_scores.iteritems(), key=operator.itemgetter(1), reverse=True)
+  sorted_phrase_scores = sorted(phrase_scores.items(), key=operator.itemgetter(1), reverse=True)
   n_phrases = len(sorted_phrase_scores)
   if incl_scores:
     return sorted_phrase_scores[0:int(n_phrases/1)]
   else:
     return map(lambda x: x[0],
-      sorted_phrase_scores[0:int(n_phrase/1)])
+      sorted_phrase_scores[0:int(n_phrases/1)])
 
 
