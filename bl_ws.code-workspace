@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "beetlelion"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "/usr/bin/python3"
+	}
+}
