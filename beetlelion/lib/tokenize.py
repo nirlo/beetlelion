@@ -1,7 +1,7 @@
 # adapted from sujitpal.blogspot.com/2013/03/implementing-rake-algorithm-with-nltk.html
 # I had to make it work with pure functional programming and with python 3.7
 import nltk
-import rake
+import rake-nltk
 import operator
 import string
 from __future__ import division
