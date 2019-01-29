@@ -1,1 +1,4 @@
 list/
+dbconnection/venv/
+dbconnection/__pycache__
+*.pyc
