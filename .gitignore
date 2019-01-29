@@ -1,1 +1,4 @@
 list/
+beetlelion/dbconnection/venv/
+beetlelion/dbconnection/__pycache__
+*.pyc
